@@ -1,0 +1,127 @@
+# Phase 4 master curriculum (stages 0-9). Progressive unlocks, cumulative pools.
+# Reward UNCHANGED. Mechanics: D_land4. Train foe seeds < 1000, eval >= 5000.
+run:
+  name: phase4_utility
+  seed: 71
+
+env:
+  arena_size: 20
+  wall_margin: 1.0
+  obstacles: [[8.0, 8.0, 9.0, 9.0, 2.0], [11.0, 11.0, 12.0, 12.0, 2.0]]
+  max_ticks: 900
+  frame_skip: 4
+  obs_version: 4
+  opponent: melee
+  opponent_kwargs: {seed: 71}
+  loadout:
+    sword: 1
+    shield: 1
+    bread: 5
+    golden_apple: 2
+    ender_pearl: 4
+    cobweb: 4
+    block: 16
+    strength_potion: 1
+    bow: 1
+    arrow: 16
+  enabled_items: [sword]
+  opponent_pool:
+    # stage 0: melee parity under the new systems
+    - until: 300000
+      pool:
+        - {opponent: melee, kwargs: {seed: 71}, enabled: [sword]}
+        - {opponent: chaser, kwargs: {seed: 72}, enabled: [sword]}
+    # stage 1: shield
+    - until: 800000
+      pool:
+        - {opponent: melee, kwargs: {seed: 73}, enabled: [sword, shield]}
+        - {opponent: aggressive, kwargs: {seed: 74}, enabled: [sword, shield]}
+        - {opponent: shieldholder, kwargs: {seed: 75}, enabled: [sword, shield]}
+    # stage 2: food + gapple (sustain)
+    - until: 1300000
+      pool:
+        - {opponent: melee, kwargs: {seed: 76}, enabled: [sword, shield, bread, golden_apple]}
+        - {opponent: gappleuser, kwargs: {seed: 77}, enabled: [sword, shield, bread, golden_apple]}
+    # stage 3: pearl (mobility)
+    - until: 1800000
+      pool:
+        - {opponent: strafepress, kwargs: {seed: 78}, enabled: [sword, shield, bread, golden_apple, ender_pearl]}
+        - {opponent: pearlescaper, kwargs: {seed: 79}, enabled: [sword, shield, bread, golden_apple, ender_pearl]}
+        - {opponent: pearlchaser, kwargs: {seed: 80}, enabled: [sword, shield, bread, golden_apple, ender_pearl]}
+    # stage 4: cobweb (control)
+    - until: 2300000
+      pool:
+        - {opponent: cobwebcontroller, kwargs: {seed: 81}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb]}
+        - {opponent: melee, kwargs: {seed: 82}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb]}
+    # stage 5: blocks
+    - until: 2800000
+      pool:
+        - {opponent: blockdefender, kwargs: {seed: 83}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block]}
+    # stage 6: fluids (water/lava buckets in loadout via registry; enabled ids)
+    - until: 3300000
+      pool:
+        - {opponent: mixed, kwargs: {seed: 84}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block, water_bucket, lava_bucket]}
+    # stage 7: potions
+    - until: 3800000
+      pool:
+        - {opponent: potionfighter, kwargs: {seed: 85}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block, water_bucket, lava_bucket, strength_potion, speed_potion, fire_resistance_potion, healing_potion]}
+    # stage 8: ranged
+    - until: 4300000
+      pool:
+        - {opponent: rangedfighter, kwargs: {seed: 86}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block, water_bucket, lava_bucket, strength_potion, speed_potion, fire_resistance_potion, healing_potion, bow]}
+    # stage 9: full utility
+    - until: null
+      pool:
+        - {opponent: mixedutility, kwargs: {seed: 87}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block, water_bucket, lava_bucket, strength_potion, speed_potion, fire_resistance_potion, healing_potion, bow]}
+        - {opponent: random, kwargs: {seed: 88}, enabled: [sword, shield, bread, golden_apple, ender_pearl, cobweb, block, water_bucket, lava_bucket, strength_potion, speed_potion, fire_resistance_potion, healing_potion, bow]}
+
+combat:
+  crit_mult: 1.5
+  attack_arc_deg: 75.0
+  attack_arc_vertical_deg: 75.0
+  landing_attack_delay_ticks: 4
+
+reward:
+  w_damage_dealt: 0.20
+  w_damage_taken: -0.12
+  kill: 10.0
+  death: -10.0
+  win: 5.0
+  loss: -5.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+
+training:
+  algorithm: PPO
+  timesteps: 4500000
+  lr: 0.0003
+  n_steps: 512
+  batch_size: 256
+  n_epochs: 4
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  net_arch: [256, 256]
+
+eval:
+  freq: 100000
+  episodes: 10
+  seeds: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009]
+
+checkpoint:
+  dir: checkpoints/phase4
+  freq: 250000
+  keep: 3
+
+perf:
+  n_envs: 2
+  headless: true
+
+logging:
+  tensorboard: logs/phase4

@@ -1,0 +1,986 @@
+{
+  "best_overall": "checkpoints/final_7day\\best_overall.zip",
+  "best_score": 2.35,
+  "legs": {
+    "core_consolidate": {
+      "status": "done",
+      "started": "Wed Sep 23 03:44:36 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/final_7day\\best_overall.zip",
+      "finished": "Wed Sep 23 03:44:49 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "gate": {},
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_core\\best_model.zip",
+      "promoted": "checkpoints/phase5_core\\best_model.zip",
+      "skill": null
+    },
+    "bow_discovery": {
+      "status": "done",
+      "started": "Wed Sep 23 03:44:49 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_core\\best_model.zip",
+      "finished": "Wed Sep 23 03:45:14 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "gate": {
+        "checkpoint": "checkpoints/phase4a_bow\\best_model.zip",
+        "conditions": {
+          "bow_available": {
+            "episodes": 40,
+            "win_rate": 0.25,
+            "dealt": 9.0,
+            "taken": 12.0,
+            "shots_per_ep": 7.25,
+            "hits_per_ep": 0.25,
+            "hit_frac": 0.034,
+            "point_blank_per_ep": 0.25
+          },
+          "bow_unavailable": {
+            "episodes": 40,
+            "win_rate": 0.0,
+            "dealt": 1.88,
+            "taken": 12.0,
+            "shots_per_ep": 0.0,
+            "hits_per_ep": 0.0,
+            "hit_frac": 0.0,
+            "point_blank_per_ep": 0.0
+          }
+        },
+        "melee_retention": {
+          "episodes": 20,
+          "win_rate": 1.0,
+          "dealt": 22.62,
+          "taken": 4.0,
+          "shots_per_ep": 0.0,
+          "hits_per_ep": 0.0,
+          "hit_frac": 0.0,
+          "point_blank_per_ep": 0.0
+        },
+        "checks": {
+          "conditional_advantage": true,
+          "projectiles_land": false,
+          "no_pointblank_spam": true,
+          "melee_retained": true
+        },
+        "verdict": "NOT_PROVEN",
+        "deltas": {
+          "win": 0.25,
+          "taken": 0.0
+        }
+      },
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase4a_bow\\best_model.zip",
+      "promoted": "checkpoints/phase4a_bow\\best_model.zip",
+      "skill": "bow"
+    },
+    "bow_consolidate": {
+      "status": "done",
+      "started": "Wed Sep 23 03:45:14 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase4a_bow\\best_model.zip",
+      "finished": "Wed Sep 23 03:45:40 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "gate": {
+        "checkpoint": "checkpoints/phase4a_bow\\best_model.zip",
+        "conditions": {
+          "bow_available": {
+            "episodes": 40,
+            "win_rate": 0.25,
+            "dealt": 9.0,
+            "taken": 12.0,
+            "shots_per_ep": 7.25,
+            "hits_per_ep": 0.25,
+            "hit_frac": 0.034,
+            "point_blank_per_ep": 0.25
+          },
+          "bow_unavailable": {
+            "episodes": 40,
+            "win_rate": 0.0,
+            "dealt": 1.88,
+            "taken": 12.0,
+            "shots_per_ep": 0.0,
+            "hits_per_ep": 0.0,
+            "hit_frac": 0.0,
+            "point_blank_per_ep": 0.0
+          }
+        },
+        "melee_retention": {
+          "episodes": 20,
+          "win_rate": 1.0,
+          "dealt": 22.62,
+          "taken": 4.0,
+          "shots_per_ep": 0.0,
+          "hits_per_ep": 0.0,
+          "hit_frac": 0.0,
+          "point_blank_per_ep": 0.0
+        },
+        "checks": {
+          "conditional_advantage": true,
+          "projectiles_land": false,
+          "no_pointblank_spam": true,
+          "melee_retained": true
+        },
+        "verdict": "NOT_PROVEN",
+        "deltas": {
+          "win": 0.25,
+          "taken": 0.0
+        }
+      },
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase4a_bow\\best_model.zip",
+      "promoted": "checkpoints/phase4a_bow\\best_model.zip",
+      "skill": "bow"
+    },
+    "consolidate_0": {
+      "status": "done",
+      "started": "Wed Sep 23 03:45:40 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase4a_bow\\best_model.zip",
+      "finished": "Wed Sep 23 03:45:53 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_1": {
+      "status": "done",
+      "started": "Wed Sep 23 03:45:53 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:46:05 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_2": {
+      "status": "done",
+      "started": "Wed Sep 23 03:46:05 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:46:18 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_3": {
+      "status": "done",
+      "started": "Wed Sep 23 03:46:18 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:46:30 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_4": {
+      "status": "done",
+      "started": "Wed Sep 23 03:46:30 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:46:43 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_5": {
+      "status": "done",
+      "started": "Wed Sep 23 03:46:43 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:46:55 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_6": {
+      "status": "done",
+      "started": "Wed Sep 23 03:46:55 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:47:08 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_7": {
+      "status": "done",
+      "started": "Wed Sep 23 03:47:08 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:47:20 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_8": {
+      "status": "done",
+      "started": "Wed Sep 23 03:47:20 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:47:33 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_9": {
+      "status": "done",
+      "started": "Wed Sep 23 03:47:33 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:47:45 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_10": {
+      "status": "done",
+      "started": "Wed Sep 23 03:47:45 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:47:58 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_11": {
+      "status": "done",
+      "started": "Wed Sep 23 03:47:58 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:48:10 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_12": {
+      "status": "done",
+      "started": "Wed Sep 23 03:48:10 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:48:23 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_13": {
+      "status": "done",
+      "started": "Wed Sep 23 03:48:23 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:48:35 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_14": {
+      "status": "done",
+      "started": "Wed Sep 23 03:48:35 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:48:48 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_15": {
+      "status": "done",
+      "started": "Wed Sep 23 03:48:48 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:49:01 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_16": {
+      "status": "done",
+      "started": "Wed Sep 23 03:49:01 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:49:13 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_17": {
+      "status": "done",
+      "started": "Wed Sep 23 03:49:13 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:49:26 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_18": {
+      "status": "done",
+      "started": "Wed Sep 23 03:49:26 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:49:38 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_19": {
+      "status": "done",
+      "started": "Wed Sep 23 03:49:38 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:49:51 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_20": {
+      "status": "done",
+      "started": "Wed Sep 23 03:49:51 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:50:03 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_21": {
+      "status": "done",
+      "started": "Wed Sep 23 03:50:03 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:50:16 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_22": {
+      "status": "done",
+      "started": "Wed Sep 23 03:50:16 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:50:28 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_23": {
+      "status": "done",
+      "started": "Wed Sep 23 03:50:28 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:50:41 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_24": {
+      "status": "done",
+      "started": "Wed Sep 23 03:50:41 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:50:53 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_25": {
+      "status": "done",
+      "started": "Wed Sep 23 03:50:53 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:51:06 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_26": {
+      "status": "done",
+      "started": "Wed Sep 23 03:51:06 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:51:18 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_27": {
+      "status": "done",
+      "started": "Wed Sep 23 03:51:18 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:51:31 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_28": {
+      "status": "done",
+      "started": "Wed Sep 23 03:51:31 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:51:43 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_29": {
+      "status": "done",
+      "started": "Wed Sep 23 03:51:43 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:51:56 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_30": {
+      "status": "done",
+      "started": "Wed Sep 23 03:51:56 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:52:08 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_31": {
+      "status": "done",
+      "started": "Wed Sep 23 03:52:08 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:52:21 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_32": {
+      "status": "done",
+      "started": "Wed Sep 23 03:52:21 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:52:33 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_33": {
+      "status": "done",
+      "started": "Wed Sep 23 03:52:33 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:52:46 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_34": {
+      "status": "done",
+      "started": "Wed Sep 23 03:52:46 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:52:58 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_35": {
+      "status": "done",
+      "started": "Wed Sep 23 03:52:58 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:53:11 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_36": {
+      "status": "done",
+      "started": "Wed Sep 23 03:53:11 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:53:24 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_37": {
+      "status": "done",
+      "started": "Wed Sep 23 03:53:24 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:53:36 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_38": {
+      "status": "done",
+      "started": "Wed Sep 23 03:53:36 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:53:49 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_39": {
+      "status": "done",
+      "started": "Wed Sep 23 03:53:49 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:54:01 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_40": {
+      "status": "done",
+      "started": "Wed Sep 23 03:54:01 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:54:14 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_41": {
+      "status": "done",
+      "started": "Wed Sep 23 03:54:14 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:54:26 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_42": {
+      "status": "done",
+      "started": "Wed Sep 23 03:54:26 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:54:39 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_43": {
+      "status": "done",
+      "started": "Wed Sep 23 03:54:39 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:54:51 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_44": {
+      "status": "done",
+      "started": "Wed Sep 23 03:54:51 2026",
+      "timesteps": 2000,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:55:04 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    },
+    "consolidate_45": {
+      "status": "done",
+      "started": "Wed Sep 23 03:55:04 2026",
+      "timesteps": 1725,
+      "n_envs": 2,
+      "parent_ckpt": "checkpoints/phase5_integrated\\latest.zip",
+      "finished": "Wed Sep 23 03:55:16 2026",
+      "retention": {
+        "melee": 0.4,
+        "shield_defense": 0.95,
+        "sustain": 1.0
+      },
+      "retention_ok": true,
+      "score": 2.35,
+      "trained_ckpt": "checkpoints/phase5_integrated\\best_model.zip",
+      "promoted": "checkpoints/phase5_integrated\\best_model.zip"
+    }
+  },
+  "matrix": {
+    "skills": {
+      "melee": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "crit": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "strafe": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "symmetry": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "shield": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "anti_shield": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "food": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "golden_apple": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "sustain": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "pearl_kite_cutoff": {
+        "status": "policy_proven",
+        "source": "3A2 baseline"
+      },
+      "bow": {
+        "status": "not_proven",
+        "gate": "NOT_PROVEN",
+        "checkpoint": "checkpoints/phase4a_bow\\best_model.zip",
+        "retention": true
+      }
+    },
+    "updated": "Wed Sep 23 03:55:16 2026"
+  }
+}

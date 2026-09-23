@@ -1,0 +1,84 @@
+# Phase 2.5: counterplay curriculum. Obs v3. Reward UNCHANGED (deliberate).
+# Train foe seeds < 1000; eval suite uses seeds >= 5000 (no leakage).
+run:
+  name: phase25_counterplay
+  seed: 21
+
+env:
+  arena_size: 20
+  wall_margin: 1.0
+  obstacles: [[8.0, 8.0, 9.0, 9.0, 2.0], [11.0, 11.0, 12.0, 12.0, 2.0]]
+  max_ticks: 900
+  frame_skip: 4
+  obs_version: 3
+  opponent: melee
+  opponent_kwargs: {seed: 21}
+  opponent_pool:
+    - until: 250000
+      pool:
+        - {opponent: melee, kwargs: {seed: 21}}
+        - {opponent: chaser, kwargs: {seed: 22}}
+    - until: 500000
+      pool:
+        - {opponent: backoff, kwargs: {seed: 23}}
+        - {opponent: strafepress, kwargs: {seed: 24}}
+    - until: 800000
+      pool:
+        - {opponent: landpunish, kwargs: {seed: 25}}
+        - {opponent: misspunish, kwargs: {seed: 26}}
+        - {opponent: strafepress, kwargs: {seed: 27}}
+    - until: 1100000
+      pool:
+        - {opponent: mixed, kwargs: {seed: 28}}
+        - {opponent: defensive, kwargs: {seed: 29}}
+    - until: null
+      pool:
+        - {opponent: mixed, kwargs: {seed: 30}}
+        - {opponent: random, kwargs: {seed: 31}}
+        - {opponent: backoff, kwargs: {seed: 32}}
+        - {opponent: landpunish, kwargs: {seed: 33}}
+
+reward:
+  w_damage_dealt: 0.20
+  w_damage_taken: -0.12
+  kill: 10.0
+  death: -10.0
+  win: 5.0
+  loss: -5.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+
+training:
+  algorithm: PPO
+  timesteps: 1500000
+  lr: 0.0003
+  n_steps: 512
+  batch_size: 256
+  n_epochs: 4
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  net_arch: [128, 128]
+
+eval:
+  freq: 100000
+  episodes: 10
+  seeds: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009]
+
+checkpoint:
+  dir: checkpoints/phase25
+  freq: 250000
+  keep: 5
+
+perf:
+  n_envs: 2
+  headless: true
+
+logging:
+  tensorboard: logs/phase25

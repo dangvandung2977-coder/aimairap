@@ -1,0 +1,12 @@
+[Unit]
+Description=PvP RL Drive reporter (12h schedule check, training-safe)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/pvp-rl
+ExecStart=/root/pvp-rl/.venv/bin/python -u /root/pvp-rl/tools/google_drive_reporter.py --check
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

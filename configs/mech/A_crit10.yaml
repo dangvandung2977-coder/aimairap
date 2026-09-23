@@ -1,0 +1,133 @@
+checkpoint:
+  dir: checkpoints/mech_A_crit10
+  freq: 200000
+  keep: 5
+combat:
+  crit_mult: 1.0
+env:
+  arena_size: 20
+  frame_skip: 4
+  max_ticks: 900
+  obs_version: 3
+  obstacles:
+  - - 8.0
+    - 8.0
+    - 9.0
+    - 9.0
+    - 2.0
+  - - 11.0
+    - 11.0
+    - 12.0
+    - 12.0
+    - 2.0
+  opponent: melee
+  opponent_kwargs:
+    seed: 31
+  opponent_pool:
+  - pool:
+    - kwargs:
+        seed: 31
+      opponent: melee
+    - kwargs:
+        seed: 32
+      opponent: chaser
+    until: 250000
+  - pool:
+    - kwargs:
+        seed: 33
+      opponent: gspace
+    - kwargs:
+        seed: 34
+      opponent: melee
+    until: 500000
+  - pool:
+    - kwargs:
+        seed: 35
+      opponent: gantiair
+    - kwargs:
+        seed: 36
+      opponent: strafepress
+    until: 750000
+  - pool:
+    - kwargs:
+        seed: 37
+      opponent: greengage
+    - kwargs:
+        seed: 38
+      opponent: backoff
+    until: 1000000
+  - pool:
+    - kwargs:
+        seed: 39
+      opponent: gmixed
+    - kwargs:
+        seed: 40
+      opponent: misspunish
+    until: 1250000
+  - pool:
+    - kwargs:
+        seed: 41
+      opponent: gmixed
+    - kwargs:
+        seed: 42
+      opponent: gantiair
+    - kwargs:
+        seed: 43
+      opponent: random
+    - kwargs:
+        seed: 44
+      opponent: mixed
+    until: null
+  wall_margin: 1.0
+eval:
+  episodes: 10
+  freq: 100000
+  seeds:
+  - 1000
+  - 1001
+  - 1002
+  - 1003
+  - 1004
+  - 1005
+  - 1006
+  - 1007
+  - 1008
+  - 1009
+logging:
+  tensorboard: logs/mech_A_crit10
+mechanics_label: crit_mult 1.5 -> 1.0
+perf:
+  headless: true
+  n_envs: 2
+physics: {}
+reward:
+  death: -10.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  kill: 10.0
+  loss: -5.0
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+  w_damage_dealt: 0.2
+  w_damage_taken: -0.12
+  win: 5.0
+run:
+  name: mech_A_crit10
+  seed: 51
+training:
+  algorithm: PPO
+  batch_size: 256
+  clip_range: 0.2
+  ent_coef: 0.0
+  gae_lambda: 0.95
+  gamma: 0.99
+  lr: 0.0003
+  max_grad_norm: 0.5
+  n_epochs: 4
+  n_steps: 512
+  net_arch:
+  - 128
+  - 128
+  timesteps: 400000
+  vf_coef: 0.5

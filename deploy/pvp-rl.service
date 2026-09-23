@@ -1,0 +1,19 @@
+[Unit]
+Description=PvP RL 168h autonomous curriculum controller
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/pvp-rl
+# Resumes automatically from checkpoints/final_7day/manifest.json (absolute
+# deadline is persisted, so --hours only matters on the very first start).
+ExecStart=/root/pvp-rl/.venv/bin/python -u /root/pvp-rl/train_7day.py --hours 168
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGTERM
+TimeoutStopSec=120
+StandardOutput=append:/root/pvp-rl/logs/train_7day.log
+StandardError=append:/root/pvp-rl/logs/train_7day.log
+
+[Install]
+WantedBy=multi-user.target

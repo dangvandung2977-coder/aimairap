@@ -1,0 +1,173 @@
+checkpoint:
+  dir: checkpoints/phase4_1b
+  freq: 250000
+  keep: 3
+combat:
+  attack_arc_deg: 75.0
+  attack_arc_vertical_deg: 75.0
+  crit_mult: 1.5
+  landing_attack_delay_ticks: 4
+env:
+  arena_size: 20
+  enabled_items:
+  - sword
+  frame_skip: 4
+  loadout:
+    arrow: 16
+    block: 16
+    bow: 1
+    bread: 5
+    cobweb: 4
+    ender_pearl: 4
+    golden_apple: 2
+    shield: 1
+    strength_potion: 1
+    sword: 1
+  max_ticks: 900
+  obs_version: 4
+  obstacles:
+  - - 8.0
+    - 8.0
+    - 9.0
+    - 9.0
+    - 2.0
+  - - 11.0
+    - 11.0
+    - 12.0
+    - 12.0
+    - 2.0
+  opponent: melee
+  opponent_kwargs:
+    seed: 71
+  opponent_pool:
+  - pool:
+    - enabled: &id001
+      - sword
+      - shield
+      kwargs:
+        seed: 81
+      opponent: melee
+    - enabled: *id001
+      kwargs:
+        seed: 82
+      opponent: shieldturtle
+    until: 200000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 83
+      opponent: shieldturtle
+    - enabled: *id001
+      kwargs:
+        seed: 84
+      opponent: shieldbaiter
+    until: 450000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 85
+      opponent: shieldbaiter
+    - enabled: *id001
+      kwargs:
+        seed: 86
+      opponent: shieldstrafer
+    until: 650000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 87
+      opponent: shieldstrafer
+    - enabled: *id001
+      kwargs:
+        seed: 88
+      opponent: shieldpressure
+    until: 850000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 89
+      opponent: shieldpressure
+    - enabled: *id001
+      kwargs:
+        seed: 90
+      opponent: shieldmixed
+    until: 1000000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 91
+      opponent: shieldmixed
+    - enabled: *id001
+      kwargs:
+        seed: 92
+      opponent: melee
+    until: 1150000
+  - pool:
+    - enabled: *id001
+      kwargs:
+        seed: 93
+      opponent: melee
+    - enabled: *id001
+      kwargs:
+        seed: 94
+      opponent: aggressive
+    - enabled: *id001
+      kwargs:
+        seed: 95
+      opponent: shieldmixed
+    - enabled: *id001
+      kwargs:
+        seed: 96
+      opponent: shieldholder
+    until: null
+  wall_margin: 1.0
+eval:
+  episodes: 10
+  freq: 100000
+  seeds:
+  - 1000
+  - 1001
+  - 1002
+  - 1003
+  - 1004
+  - 1005
+  - 1006
+  - 1007
+  - 1008
+  - 1009
+logging:
+  tensorboard: logs/phase4_1b
+perf:
+  headless: true
+  n_envs: 2
+reward:
+  death: -10.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  kill: 10.0
+  loss: -5.0
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+  w_damage_dealt: 0.2
+  w_damage_taken: -0.12
+  win: 5.0
+run:
+  name: phase4_1b_antishield
+  seed: 71
+training:
+  algorithm: PPO
+  batch_size: 256
+  clip_range: 0.2
+  ent_coef: 0.0
+  gae_lambda: 0.95
+  gamma: 0.99
+  lr: 0.0003
+  max_grad_norm: 0.5
+  n_epochs: 4
+  n_steps: 512
+  net_arch:
+  - 256
+  - 256
+  timesteps: 1300000
+  vf_coef: 0.5

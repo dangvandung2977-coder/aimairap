@@ -1,0 +1,47 @@
+{
+  "generated": "session migration + stage4a build",
+  "observation": "v4 / 73 dims (assert-guarded in rl/environment/obs_schema.py)",
+  "action_space": "MultiDiscrete[5,2,2,2,2,2,9,3,3] (rl/environment/action_map.py)",
+  "canonical_baseline": "checkpoints/phase4_stage3/3a2/final.zip",
+  "hard_invariant": {
+    "note": "The 9-slot fixed HOTBAR, the 9-wide action `slot` branch, and the 73-dim obs (which loops over HOTBAR) are mutually locked to the canonical checkpoint's input layer. Only items present in HOTBAR are policy-selectable/usable. Adding a new hotbar item changes obs (73 -> 74+) and action (slot 9 -> 10+) and INVALIDATES the 73-dim canonical checkpoint.",
+    "hotbar": ["sword","shield","bread","golden_apple","ender_pearl","cobweb","block","strength_potion","bow"],
+    "policy_usable_items": ["sword","shield","bread","golden_apple","ender_pearl","cobweb","block","strength_potion","bow"],
+    "blocked_by_invariant": ["water_bucket","lava_bucket","crossbow","healing_potion","speed_potion","fire_resistance_potion"]
+  },
+  "skills": {
+    "melee":            {"class": "A", "note": "policy-proven in 3A2 (try_attack, cooldown, combo)"},
+    "crit":             {"class": "A", "note": "crit_mult 1.5; ablation showed removing it collapses learning"},
+    "sprint_timing":    {"class": "A", "note": "sprint in movement, proven"},
+    "strafe":           {"class": "A", "note": "situational; emerges vs some foes"},
+    "counter_strafe":   {"class": "A", "note": "circler symmetry probes proven (geometry-dependent side selection)"},
+    "aim_tracking":     {"class": "A", "note": "yaw tracking, obs aim bearing"},
+    "spacing":          {"class": "A", "note": "defensive/backoff foes handled"},
+    "shield_defense":   {"class": "A", "note": "policy-proven; regression win ~.95"},
+    "shield_drop":      {"class": "A", "note": "drop-to-counter observed in 4.1"},
+    "anti_shield":      {"class": "A", "note": "turtle offense learned in 4.1H"},
+    "golden_apple":     {"class": "A", "note": "sustain pipeline proven"},
+    "conditional_heal": {"class": "A", "note": "safe-only eating proven in 2.6"},
+    "sustain":          {"class": "A", "note": "regression win ~1.0"},
+    "pearl_kite_cutoff":{"class": "A", "note": "Stage 3A proven; conditional/conserved"},
+    "pearl_reposition": {"class": "C", "note": "3B-3E scripted-only / unlearned; NOT pursued (per brief)"},
+
+    "bow":              {"class": "B->buildable", "note": "mechanics fully wired (use.py bow_shot -> Projectile arrow, gravity, hit detection, damage 6, arrow inventory, switch). Was unused (arrow:0). Stage 4A built: ranged opponents (bowfighter/rangedrunner), loadout with arrows, scripted differential PROVEN (logs/bow_scenario.json: bow win +1.0 / dealt +14 / taken -6 vs melee-only), gate tools/stage4a_gate.py, config configs/stage4a.yaml. Policy-proof pending controller PPO screen."},
+    "bow_lead_aim":     {"class": "B", "note": "arrow ballistics (vel 30, gravity 9) require lead; scripted shooter lands 4/4 vs kiter -> affordance proven"},
+    "bow_to_melee":     {"class": "B", "note": "melee fallback exists; switch cost 2 ticks; gate checks retention + point-blank spam"},
+
+    "cobweb":           {"class": "C", "note": "in hotbar; add_web + 0.35x slow applied in physics/engine.py. Usable, no scenario built yet."},
+    "block_place":      {"class": "C", "note": "in hotbar; add_block/remove_near + solid collision. Usable, no scenario built yet."},
+    "strength_potion":  {"class": "C", "note": "in hotbar; damage_mult 1.3 applied. Usable, no scenario built yet."},
+
+    "lava":             {"class": "D", "note": "lava_burn damage + fire_resistance implemented, BUT lava_bucket NOT in hotbar -> not policy-usable without breaking obs/action/checkpoint invariant"},
+    "water":            {"class": "D", "note": "0.6x slow implemented, BUT water_bucket NOT in hotbar -> blocked by invariant"},
+    "crossbow":         {"class": "E", "note": "no crossbow item exists; adding one needs a new hotbar slot -> breaks obs(73->74)/action(slot 9->10)/canonical checkpoint. Blocked by the hard invariant the brief also requires preserving."},
+    "speed_potion":     {"class": "D", "note": "effect implemented, not in hotbar -> blocked"},
+    "healing_potion":   {"class": "D", "note": "instant heal implemented, not in hotbar -> blocked"},
+    "fire_res_potion":  {"class": "D", "note": "effect implemented, not in hotbar -> blocked"}
+  },
+  "trainable_new_frontier_within_invariant": ["bow", "cobweb", "block", "strength_potion"],
+  "delivered_this_session": ["bow"],
+  "verdict": "Ranged (bow) is the one major new skill that is both mechanically wired AND scenario-provable without breaking the obs/action/checkpoint invariant. It is built, scripted-proven, gated, and scheduled in the 168h controller. Crossbow/water/lava/extra-potions are blocked by the 9-slot hotbar + 73-dim obs + canonical-checkpoint invariant and were NOT forced (would violate the preserve-architecture hard rules)."
+}

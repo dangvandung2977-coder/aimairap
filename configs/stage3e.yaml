@@ -1,0 +1,118 @@
+checkpoint:
+  dir: checkpoints/phase4_stage3/3e
+  freq: 100000
+  keep: 3
+combat:
+  attack_arc_deg: 75.0
+  attack_arc_vertical_deg: 75.0
+  crit_mult: 1.5
+  landing_attack_delay_ticks: 4
+env:
+  arena_size: 32
+  enabled_items:
+  - sword
+  - shield
+  - bread
+  - golden_apple
+  - ender_pearl
+  frame_skip: 4
+  loadout:
+    arrow: 0
+    block: 0
+    bow: 1
+    bread: 2
+    cobweb: 0
+    ender_pearl: 4
+    golden_apple: 1
+    shield: 1
+    strength_potion: 0
+    sword: 1
+  max_ticks: 150
+  obs_version: 4
+  obstacles:
+  - - 16.0
+    - 6.0
+    - 17.0
+    - 22.0
+    - 3.0
+  opponent: melee
+  opponent_kwargs:
+    seed: 71
+  opponent_pool:
+  - enabled:
+    - sword
+    - shield
+    - bread
+    - golden_apple
+    - ender_pearl
+    sample_pool:
+    - agent_spawn:
+      - 10.0
+      - 0.0
+      - 16.0
+      foe_spawn:
+      - 24.0
+      - 0.0
+      - 16.0
+      kwargs: {}
+      opponent: dummy
+      spawn_jitter: 1.0
+      weight: 6.0
+    - kwargs: {}
+      opponent: melee
+      weight: 1.5
+    - kwargs: {}
+      opponent: shieldmixed
+      weight: 0.5
+    until: null
+  wall_margin: 1.0
+eval:
+  episodes: 10
+  freq: 100000
+  seeds:
+  - 1000
+  - 1001
+  - 1002
+  - 1003
+  - 1004
+  - 1005
+  - 1006
+  - 1007
+  - 1008
+  - 1009
+logging:
+  tensorboard: logs/phase4_stage3_3e
+perf:
+  headless: true
+  n_envs: 2
+reward:
+  death: -10.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  kill: 10.0
+  loss: -5.0
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+  w_damage_dealt: 0.2
+  w_damage_taken: -0.12
+  win: 5.0
+run:
+  name: stage3e_gapcross
+  seed: 71
+training:
+  algorithm: PPO
+  batch_size: 256
+  clip_range: 0.2
+  ent_coef: 0.0
+  gae_lambda: 0.95
+  gamma: 0.99
+  lr: 0.0003
+  max_grad_norm: 0.5
+  n_epochs: 4
+  n_steps: 512
+  net_arch:
+  - 256
+  - 256
+  timesteps: 100000
+  vf_coef: 0.5

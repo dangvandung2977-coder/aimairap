@@ -1,0 +1,77 @@
+# Phase 2: pure-melee upgrade. Obs v2, curriculum over scripted profiles.
+# Eval seeds (5000+) are held out from training foe seeds (<1000).
+run:
+  name: phase2_melee
+  seed: 11
+
+env:
+  arena_size: 20
+  wall_margin: 1.0
+  obstacles: [[8.0, 8.0, 9.0, 9.0, 2.0], [11.0, 11.0, 12.0, 12.0, 2.0]]
+  max_ticks: 900
+  frame_skip: 4
+  obs_version: 2
+  opponent: melee
+  opponent_kwargs: {attack_range: 2.8, strafe_ticks: 35, jump_prob: 0.02, seed: 0}
+  # Stage 1: basic melee. Stage 2: + strafers. Stage 3: randomized pool.
+  opponent_pool:
+    - until: 400000
+      pool:
+        - {opponent: melee, kwargs: {seed: 11}}
+        - {opponent: chaser, kwargs: {seed: 12}}
+    - until: 900000
+      pool:
+        - {opponent: melee, kwargs: {seed: 13}}
+        - {opponent: strafer, kwargs: {seed: 14}}
+        - {opponent: aggressive, kwargs: {seed: 15}}
+    - until: null
+      pool:
+        - {opponent: strafer, kwargs: {seed: 16}}
+        - {opponent: defensive, kwargs: {seed: 17}}
+        - {opponent: aggressive, kwargs: {seed: 18}}
+        - {opponent: random, kwargs: {seed: 19}}
+
+reward:
+  w_damage_dealt: 0.20
+  w_damage_taken: -0.12
+  kill: 10.0
+  death: -10.0
+  win: 5.0
+  loss: -5.0
+  engage_bonus: 0.01
+  engage_range: 6.0
+  face_bonus: 0.005
+  step_penalty: -0.001
+  timeout_penalty: -1.0
+
+training:
+  algorithm: PPO
+  timesteps: 2000000
+  lr: 0.0003
+  n_steps: 512
+  batch_size: 256
+  n_epochs: 4
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  net_arch: [128, 128]
+
+eval:
+  freq: 100000
+  episodes: 10
+  seeds: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009]
+
+checkpoint:
+  dir: checkpoints/phase2
+  freq: 200000
+  keep: 5
+
+perf:
+  n_envs: 2
+  headless: true
+
+logging:
+  tensorboard: logs/phase2

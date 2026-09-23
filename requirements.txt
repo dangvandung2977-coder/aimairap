@@ -1,0 +1,8 @@
+torch --quiet
+gymnasium
+stable-baselines3
+numpy
+pygame
+pyyaml
+tensorboard
+pytest
