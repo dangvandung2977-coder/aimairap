@@ -87,3 +87,13 @@ verified); CONTROL/COMBAT/POLICY require a live Minecraft (see §20).**
 `./gradlew build` in `minecraft-mod/`, drop the jar in a NeoForge 1.21.1
 server `mods/`, run TEST A–K in order, then `/pvpbot dump` + golden replay
 before any claim about real-Minecraft behavior.
+
+## Mineflayer 2v2 path (`mineflayer/`)
+
+Same bridge, no mod needed: two real-client bots (`node bot2v2.js`), each
+with its own bridge connection and own-perspective 73-dim obs, decide every
+4 physics ticks. `npm test` passes (encoder/decoder pure-function tests).
+Honest deltas vs the mod path: absorption always 0 (not exposed); foe
+shield/eat/effects shared same-process (2v2 self-play only); shield fixed in
+offhand; damage measured by observed health deltas. Not yet run against a
+live server (no MC server in this environment).

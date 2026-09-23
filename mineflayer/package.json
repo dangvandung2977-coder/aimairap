@@ -1,0 +1,14 @@
+{
+  "name": "pvprl-mineflayer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Two mineflayer bots fighting each other, driven by the trained PPO checkpoint via the localhost bridge",
+  "type": "commonjs",
+  "dependencies": {
+    "mineflayer": "^4.24.0"
+  },
+  "scripts": {
+    "fight": "node bot2v2.js",
+    "test": "node test_encoder.js"
+  }
+}

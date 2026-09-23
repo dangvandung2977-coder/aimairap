@@ -240,7 +240,7 @@ public class PvpBot {
         f.counts[5] = count(inv, Items.COBWEB);
         f.counts[6] = count(inv, Items.DIRT, Items.COBBLESTONE);
         f.counts[7] = count(inv, Items.SPLASH_POTION);
-        f.counts[8] = count(inv, Items.BOW) > 0 ? count(inv, Items.ARROW) : 0;
+        f.counts[8] = count(inv, Items.BOW) > 0 ? 1 : 0; // bow OWNED flag (schema counts the tool, not arrows)
         f.pearlCooldown = p.getCooldowns().isOnCooldown(Items.ENDER_PEARL) ? 10 : 0;
         f.gappleCooldown = 0; // MC has none; mod tracks via BotState if needed
         f.eatingTicksLeft = p.isUsingItem() ? 16.0 : 0.0; // ~half of 32-tick sim use

@@ -14,3 +14,6 @@ config/google_drive.json
 # NeoForge build outputs (release jar kept as minecraft-mod/pvprl-*.jar)
 minecraft-mod/build/
 minecraft-mod/.gradle/
+# mineflayer bot deps + dumps
+mineflayer/node_modules/
+mineflayer/dumps/
