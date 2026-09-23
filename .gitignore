@@ -11,3 +11,6 @@ token.json
 *.token.json
 google_oauth_client.json
 config/google_drive.json
+# NeoForge build outputs (release jar kept as minecraft-mod/pvprl-*.jar)
+minecraft-mod/build/
+minecraft-mod/.gradle/

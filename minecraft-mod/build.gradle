@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'net.neoforged.gradle.userdev' version '7.0.170'
+}
+
+version = mod_version
+group = 'com.pvprl'
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+dependencies {
+    // NeoForge userdev for Minecraft 1.21.1 (see gradle.properties neo_version)
+    implementation "net.neoforged:neoforge:${neo_version}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

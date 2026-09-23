@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.neoforged.net/releases/' }
+    }
+}
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.neoforged.net/releases/' }
+        maven { url = 'https://libraries.minecraft.net/' }
+    }
+}
+rootProject.name = 'pvprl'

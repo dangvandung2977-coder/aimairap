@@ -1,0 +1,23 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="pvprl"
+version="0.1.0"
+displayName="PvP RL Bridge"
+description="Localhost PPO inference bridge: AI PvP test entity driven by the trained checkpoint."
+
+[[dependencies.pvprl]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.pvprl]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"

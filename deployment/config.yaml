@@ -1,0 +1,13 @@
+# Localhost inference bridge config. The server refuses non-localhost binds.
+host: 127.0.0.1
+port: 25575
+checkpoint: checkpoints/phase4_stage3/3a2/final.zip
+expected_sha256: 660d524dab2010fc390d2a82be52a7735f2f307ad3291c835f1ac23e7e8d5e3e
+deterministic: true
+# Minecraft decision cadence: query once per 4 server ticks (matches
+# training frame_skip=4; see reports/minecraft_compatibility.md).
+decision_every_ticks: 4
+# Mod-side socket timeouts (seconds). On timeout the bot holds neutral
+# controls and retries next tick (safe fallback, never a crash).
+connect_timeout_s: 0.5
+read_timeout_s: 0.5
