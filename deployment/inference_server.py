@@ -9,6 +9,13 @@ safe error response; the server never crashes on bad input.
 from __future__ import annotations
 
 import argparse
+import os
+import sys
+
+# Allow both `python -m deployment.inference_server` and
+# `python deployment/inference_server.py` from the repo root.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import socketserver
 import time
 
